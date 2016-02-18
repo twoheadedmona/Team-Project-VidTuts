@@ -1,0 +1,32 @@
+﻿.search-group{
+    width:230px;
+    float:left;
+}
+.checkbox-container{
+    float:left;
+    line-height:0;
+    color:white;
+    margin-top:-10px;
+    margin-left:10px;
+}
+
+.search-container{
+    margin-top: 5px;
+}
+
+header{
+    height:65px;
+}
+
+.login-container{
+    float:right;
+}
+
+.login-container>li{
+    padding-left:20px;
+}
+
+.nav{
+    float:right !important;
+    margin-top:5px;
+}

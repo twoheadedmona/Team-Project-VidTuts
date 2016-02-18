@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - VideoTuts</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/HeadFoot.css" rel="stylesheet" />
+    <link href="~/Content/VideoFeed.css" rel="stylesheet" />
+</head>
+<body>
+    <header class="navbar navbar-inverse navbar-fixed-top" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-contents">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="#" class="navbar-brand">VidTuts</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-contents">
+
+
+
+                <ul class="nav navbar-nav" id="navbuttons">
+                    @{if (User.Identity.IsAuthenticated)
+                        {
+                            <li>
+                                <div class="search-container">
+                                    <form class="navbar-form" role="search" action="/Videos/Search">
+                                        <div class="input-group search-group">
+                                            <input type="text" class="form-control" placeholder="Search" name="query" id="srch-term">
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                                            </div>
+
+                                        </div>
+                                        <span class="checkbox-container">
+                                            <input type="checkbox" name="criteria" value="2" />by title<br />
+                                            <input type="checkbox" name="criteria" value="3" />by tags<br />
+                                            <input type="checkbox" name="criteria" value="1" />by author<br />
+                                        </span>
+                                    </form>
+                                </div>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">My Profile</a></li>
+                                    <li><a href="/Users/LogOut">Log Out</a></li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+
+                            <li>
+                                <ul class="navbar-nav login-container">
+
+                                    <li>
+                                        @Html.ActionLink("Log In", "LogIn", "Users")
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </header>
+
+
+
+    <div class="container body-content">
+        @RenderBody()
+
+
+    </div>
+
+    <footer>
+        <div class="row" id="copyright">
+            <div class="text-center">
+                <h5>&copy;2015 VidTuts</h5>
+            </div>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

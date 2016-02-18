@@ -1,0 +1,12 @@
+﻿@model GreenBears.VideoTuts.Core.Entities.Admin
+
+
+
+<h2>Index Page for Admin</h2>
+
+
+@Html.ActionLink("Log Out", "LogOut", "Admin", new { @class = "btn" })
+@Html.ActionLink("Show Unaproved Videos", "ListVideosUnnaproved", "Admin", new { @class = "btn" })
+@Html.ActionLink("Show All Videos", "ListVideos", "Admin", new { @class = "btn" })
+@Html.ActionLink("Show Unaproved Users", "ListUsersUnnaproved", "Admin", new { @class = "btn" })
+@Html.ActionLink("Show All Users", "ListUsers", "Admin", new { @class = "btn" })

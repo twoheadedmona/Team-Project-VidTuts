@@ -1,0 +1,33 @@
+﻿@model IEnumerable<GreenBears.VideoTuts.Core.Entities.Video>
+
+<section id="addVideo">
+    <div id="formHiden">
+        @Html.Partial("Create")
+    </div>
+    <div id="goDown" class="down"></div>
+</section>
+
+@foreach (var video in Model)
+{
+    <section class="videoTumbnail" style="background-image: url(@video.GetTumbnail);">
+        <a href="/Videos/Details/@video.ID">
+            <section class="videoTint">
+                <div class="videoTitle">@video.Title</div>
+                <div class="videoAuthor">by
+                    @{
+                        var uR = new GreenBears.VideoTuts.Infrastructure.Repository.Entities.UserRepository();
+                        var author = uR.GetAll().SingleOrDefault(x => x.Videos.Exists(y => y.ID == video.ID)).Username;
+                    }
+                    @author</div>
+                <div class="videoFooter">
+                    <p class="videoDescription">@video.Description</p>
+                    <p class="videoTags">@video.Tags<p>
+                </div>
+            </section>
+        </a>
+    </section>
+}
+
+@section scripts{
+    <script src="~/Scripts/VideoFeed.js"></script>
+}

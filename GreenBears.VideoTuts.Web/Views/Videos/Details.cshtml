@@ -1,0 +1,22 @@
+﻿@model GreenBears.VideoTuts.Core.Entities.Video
+
+@{
+    ViewBag.Title = "Details";
+    var uR = new GreenBears.VideoTuts.Infrastructure.Repository.Entities.UserRepository();
+    var author = uR.GetAll().SingleOrDefault(x => x.Videos.Exists(y => y.ID == Model.ID)).Username;
+}
+<div id="videoContainer">
+    <h1>@Model.Title</h1>
+    <hr />
+    <div class="videoContainer">
+        @Html.Raw(Model.EmbedHtml)
+    </div>
+    <br />
+    <div class="views">Views: @Model.Views</div>
+    <div class="author">Author: @author</div>
+    <br />
+    <div class="views"> Tags: @Model.Tags</div>
+    <br />
+    <div class="description">@Model.Description</div>
+</div>
+

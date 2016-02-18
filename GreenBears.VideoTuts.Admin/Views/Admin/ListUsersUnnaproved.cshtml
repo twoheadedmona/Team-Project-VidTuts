@@ -1,0 +1,61 @@
+﻿@model IEnumerable<GreenBears.VideoTuts.Core.Entities.User>
+
+@{
+    ViewBag.Title = "ListUsersUnnaproved";
+}
+
+<h2>ListUsersUnnaproved</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsDeleted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsAproved)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Image)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsDeleted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsAproved)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditUsers", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "DeleteUsers", new { id=item.ID }) | 
+            @Html.ActionLink("Aproove", "AprooveUsers", new { id = item.ID })
+        </td>
+    </tr>
+}
+
+</table>
